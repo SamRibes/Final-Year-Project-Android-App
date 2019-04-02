@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.jjoe64.graphview.GraphView
+        android:id="@+id/all_sensor_graph"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="16dp"
+        android:background="@color/colorPrimary"
+        android:padding="32dp"
+        android:paddingLeft="32dp"
+        android:paddingTop="32dp"
+        android:paddingRight="32dp"
+        android:paddingBottom="32dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/nav_button_moist"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/nav_button_temp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"
+        android:background="@android:color/transparent"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/nav_button_humid"
+        app:layout_constraintStart_toEndOf="@+id/nav_button_light"
+        app:srcCompat="@drawable/temperature" />
+
+    <ImageButton
+        android:id="@+id/nav_button_humid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/nav_button_moist"
+        app:layout_constraintStart_toEndOf="@+id/nav_button_temp"
+        app:srcCompat="@drawable/humidity" />
+
+    <ImageButton
+        android:id="@+id/nav_button_light"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/nav_button_temp"
+        app:layout_constraintStart_toStartOf="@+id/all_sensor_graph"
+        app:srcCompat="@drawable/light_intensity" />
+
+    <ImageButton
+        android:id="@+id/nav_button_moist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="8dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/all_sensor_graph"
+        app:layout_constraintStart_toEndOf="@+id/nav_button_humid"
+        app:srcCompat="@drawable/soil_moisture" />
+
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">FYPApp</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="fyp_app">FYP App</string>
+    <string name="plant_1">Plant 1</string>
+    <string name="plant_2">Plant 2</string>
+    <string name="plant_3">Plant 3</string>
+    <string name="plant_4">Plant 4</string>
+    <string name="plant_5">Plant 5</string>
+    <string name="plant_6">Plant 6</string>
+    <string name="plantmonitor">PlantMonitor</string>
+    <string name="current_light">Current Light:</string>
+    <string name="todo">TODO</string>
+    <string name="current_humid">Current Humid:</string>
+    <string name="takes_you_back_to_main_graph">takes you back to main graph</string>
+    <string name="current_temp">Current Temp:</string>
+    <string name="current_moisture">Current Moisture:</string>
+    <string name="suggestions_will_go_here">suggestions will go here</string>
+</resources>
