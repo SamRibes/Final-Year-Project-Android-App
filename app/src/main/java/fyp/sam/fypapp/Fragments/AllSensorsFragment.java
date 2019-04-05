@@ -31,7 +31,6 @@ public class AllSensorsFragment
 
         GraphView graph = view.findViewById(R.id.all_sensor_graph);
 
-
         SetUpGraphs.setUpBarChart(((DeviceData) Objects.requireNonNull(getActivity())).dataForGraphs, ((DeviceData)getActivity()).plant_Limits,  graph);
 
         ImageButton btnNavFragTemp = (ImageButton) view.findViewById(R.id.nav_button_temp);

@@ -21,4 +21,12 @@
     <string name="current_temp">Current Temp:</string>
     <string name="current_moisture">Current Moisture:</string>
     <string name="suggestions_will_go_here">suggestions will go here</string>
+    <string name="humidity">Humidity</string>
+    <string name="temperature">Temperature</string>
+    <string name="light">Light</string>
+    <string name="moisture">Moisture</string>
+    <string name="light_android_string_fingerprint_icon_content_description">light @android:string/fingerprint_icon_content_description</string>
+    <string name="moisture_icon">Moisture Icon</string>
+    <string name="humidity_android_string_fingerprint_icon_content_description">humidity @android:string/fingerprint_icon_content_description</string>
+    <string name="temperature_android_string_fingerprint_icon_content_description">temperature @android:string/fingerprint_icon_content_description</string>
 </resources>

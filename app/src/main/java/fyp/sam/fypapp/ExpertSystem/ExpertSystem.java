@@ -75,14 +75,14 @@ public class ExpertSystem
         ArrayList<Rule> knowledgeBase = new ArrayList<>();
 
         //Get limits that change depending on time of day
-        int light_Day_Max = Integer.parseInt(localPlantLimits[3]),
-                light_Day_Min = Integer.parseInt(localPlantLimits[4]),
-                light_Night_Max = Integer.parseInt(localPlantLimits[5]),
-                light_Night_Min = Integer.parseInt(localPlantLimits[6]),
-                temp_Day_Max = Integer.parseInt(localPlantLimits[9]),
-                temp_Day_Min = Integer.parseInt(localPlantLimits[10]),
-                temp_Night_Max = Integer.parseInt(localPlantLimits[11]),
-                temp_Night_Min = Integer.parseInt(localPlantLimits[12]);
+        double light_Day_Max = Double.parseDouble(localPlantLimits[3]),
+                light_Day_Min = Double.parseDouble(localPlantLimits[4]),
+                light_Night_Max = Double.parseDouble(localPlantLimits[5]),
+                light_Night_Min = Double.parseDouble(localPlantLimits[6]),
+                temp_Day_Max = Double.parseDouble(localPlantLimits[9]),
+                temp_Day_Min = Double.parseDouble(localPlantLimits[10]),
+                temp_Night_Max = Double.parseDouble(localPlantLimits[11]),
+                temp_Night_Min = Double.parseDouble(localPlantLimits[12]);
 
         //Initialise empty fact
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -163,9 +163,7 @@ public class ExpertSystem
     private static boolean GetIsItDay() {
         int hourOfDay = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
 
-        if(hourOfDay > 6 && hourOfDay < 18)
-        {return true;}
-        else
-        {return false;}
+        //return hourOfDay > 6 && hourOfDay < 18;
+        return true;
     }
 }

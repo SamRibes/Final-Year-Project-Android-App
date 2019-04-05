@@ -12,28 +12,20 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.Query;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 import com.jjoe64.graphview.GraphView;
 
 import java.util.Objects;
 
 import fyp.sam.fypapp.Activities.DeviceData;
-import fyp.sam.fypapp.R;
 import fyp.sam.fypapp.DataManagers.SetUpGraphs;
+import fyp.sam.fypapp.R;
 
 public class HumidFragment extends Fragment
 {
-    public String mostRecentValue = null;
-
     @SuppressLint("SetTextI18n")
     @Nullable
     @Override
-    public View onCreateView
-            (@NonNull LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState)
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState)
     {
         View view = inflater.inflate(R.layout.data_humid_fragment, container, false);
 
@@ -45,29 +37,7 @@ public class HumidFragment extends Fragment
 
         TextView textView = view.findViewById(R.id.current_humid);
 
-        ((DeviceData) getActivity()).db.collection("SensorData")
-                .orderBy("timestamp", Query.Direction.DESCENDING)
-                .limit(1)
-                .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                if (task.isSuccessful()) {
-                    for (QueryDocumentSnapshot document : Objects.requireNonNull(task.getResult()))
-                    {
-                        if(document.getId().equals("Latest"))
-                        {
-                            mostRecentValue = "" +  document.get("humidity");
-                        }
-                        else
-                        {
-                            mostRecentValue = ((DeviceData) (Objects.requireNonNull(getActivity()))).dataForGraphs[0][4];
-                        }
-                    }
-                } else {
-                    mostRecentValue = ((DeviceData) (Objects.requireNonNull(getActivity()))).dataForGraphs[0][4];
-                }
-            }
-        });
+        String mostRecentValue =  ((DeviceData)getActivity()).dataForGraphs[0][4];
 
         textView.setText(this.getString(R.string.current_humid) + " " + mostRecentValue);
 

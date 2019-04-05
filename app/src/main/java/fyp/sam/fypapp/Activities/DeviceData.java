@@ -33,7 +33,6 @@ import com.google.firebase.firestore.SetOptions;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -54,8 +53,7 @@ public class DeviceData extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener
 {
     private ViewPager mViewPager;
-    public FirebaseFirestore db = FirebaseFirestore.getInstance();
-    public ArrayList<String> sensorDataList = new ArrayList<>();
+    public static FirebaseFirestore db = FirebaseFirestore.getInstance();
     public String[][] dataForGraphs;
     public String[] plant_Limits;
     FileInputStream sensorInputStream, plantInputStream;
@@ -198,10 +196,10 @@ public class DeviceData extends AppCompatActivity
             }
 
             FireBaseInterface.initialisePlantLimitsOutputStream(plantLimitsOutputStream);
-            FireBaseInterface.getDataFromServer(db, "Plant_Rules");
+            FireBaseInterface.getDataFromServer("PlantRules");
 
             FireBaseInterface.initialiseSensorDataOutputStream(sensorDataOutputStream);
-            FireBaseInterface.getDataFromServer(db, "SensorData");
+            FireBaseInterface.getDataFromServer("SensorData");
 
             Map<String, Object> data = new HashMap<>();
             data.put("refresh", true);
@@ -248,9 +246,6 @@ public class DeviceData extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item)
     {
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;

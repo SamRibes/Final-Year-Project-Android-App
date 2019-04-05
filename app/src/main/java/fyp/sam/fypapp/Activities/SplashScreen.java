@@ -46,10 +46,10 @@ public class SplashScreen extends AppCompatActivity {
                 createDataFiles();
 
                 FireBaseInterface.initialisePlantLimitsOutputStream(plantLimitsOutputStream);
-                FireBaseInterface.getDataFromServer(db, "Plant_Rules");
+                FireBaseInterface.getDataFromServer("PlantRules");
 
                 FireBaseInterface.initialiseSensorDataOutputStream(sensorDataOutputStream);
-                FireBaseInterface.getDataFromServer(db, "SensorData");
+                FireBaseInterface.getDataFromServer("SensorData");
             }
         }
         else

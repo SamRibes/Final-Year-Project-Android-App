@@ -1,13 +1,13 @@
 package fyp.sam.fypapp.DataManagers;
 
 import android.support.annotation.NonNull;
+import android.support.constraint.Constraints;
 import android.util.Log;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -17,6 +17,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.Objects;
+
+import fyp.sam.fypapp.Activities.DeviceData;
 
 import static android.content.ContentValues.TAG;
 
@@ -36,11 +38,10 @@ public class FireBaseInterface
         finalPlantLimitsOutputStream = plantLimitsOutputStream;
     }
 
-    public static void getDataFromServer(FirebaseFirestore db, String collectionPath) {
-
+    public static void getDataFromServer(String collectionPath) {
         if(collectionPath.equals("SensorData"))
         {
-            db.collection(collectionPath)
+            DeviceData.db.collection(collectionPath)
                     .orderBy("timestamp", Query.Direction.DESCENDING).
                     get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                 @Override
@@ -49,14 +50,15 @@ public class FireBaseInterface
                         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(finalSensorDataOutputStream));
                         for (QueryDocumentSnapshot document : task.getResult())
                         {
-                            if(document.getId().equals("Latest"))
+                            LocalDataManager.UpdateLocalData(document, bw);
+                            /*if(document.getId().equals("Latest"))
                             {
                                 System.out.println("Skipped " + document.getId());
                             }
                             else
                             {
                                 LocalDataManager.UpdateLocalData(document, bw);
-                            }
+                            }*/
                         }
                         try {
                             bw.close();
@@ -69,9 +71,10 @@ public class FireBaseInterface
                 }
             });
         }
-        if(collectionPath.equals("Plant_Rules"))
+        else
         {
-            DocumentReference docRef = db.collection(collectionPath).document("Peace_Lily");
+            Log.d(Constraints.TAG, "Happens");
+            DocumentReference docRef = DeviceData.db.collection(collectionPath).document("Peace_Lily");
 
             docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>()
             {
@@ -82,7 +85,6 @@ public class FireBaseInterface
                         DocumentSnapshot document = task.getResult();
 
                         LocalDataManager.UpdatePlantData(Objects.requireNonNull(document), bw);
-
                         try {
                             bw.close();
                         } catch (IOException e) {

@@ -35,7 +35,7 @@ public class LocalDataManager
             Date parsedtimestamp = Objects.requireNonNull(document.getTimestamp("timestamp")).toDate();
             long dateToLong = parsedtimestamp.getTime();
                     bw.write((
-                    (Integer.parseInt(document.getId())) + ", " +
+                    (document.getId()) + ", " +
                     dateToLong + ", " +
                     document.get("light") + ", " +
                     document.get("temp") + ", " +
@@ -80,7 +80,7 @@ public class LocalDataManager
 
     public static String[][] getLocalSensorData()
     {
-        String[][] LocalSensorData =  new String[12][6];
+        String[][] LocalSensorData =  new String[25][6];
         String delims = "[, ]+";
 
         try
@@ -113,7 +113,7 @@ public class LocalDataManager
 
     public static String[] getLocalPlant_Limits()
     {
-        String[] LocalPlantLimits =  new String[10];
+        String[] LocalPlantLimits =  new String[12];
         String delims = "[, ]+";
 
         try
